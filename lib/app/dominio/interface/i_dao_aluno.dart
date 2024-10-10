@@ -1,4 +1,5 @@
-import 'package:projetogynb/app/dominio/dto/dto_aluno.dart';
+
+import '../dto/dto_aluno.dart';
 
 abstract class IDaoAluno {
   Future<DTOAluno> salvar(DTOAluno dto);

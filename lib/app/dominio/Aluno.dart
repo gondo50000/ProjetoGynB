@@ -1,7 +1,8 @@
 import 'dart:ffi';
-import 'package:projetogynb/app/dominio/dto/dto_aluno.dart';
-import 'package:projetogynb/app/dominio/cpf.dart' as validador;
-import 'package:projetogynb/app/dominio/interface/i_dao_aluno.dart';
+
+import './cpf.dart' as validador;
+import 'dto/dto_aluno.dart';
+import 'interface/i_dao_aluno.dart';
 
 class Aluno {
   dynamic _id;
