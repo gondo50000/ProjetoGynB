@@ -1,18 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:projetogynb/app/dominio/banco/sqlite/conexao.dart';
-import 'package:projetogynb/app/dominio/banco/sqlite/dao/dao_aula.dartS';
+import 'package:projetogynb/app/dominio/banco/sqlite/dao/dao_cadastroAula.dart';
+import 'package:projetogynb/app/dominio/dto/dto_aluno.dart';
 import 'package:projetogynb/app/dominio/dto/dto_aula.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 main() async {
   late Database db;
-  late DaoAula dao;
+  late DaoCadastroAula dao;
 
   setUpAll(() {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
-    dao = DaoAula();
+    dao = DaoCadastroAula();
   });
 
   setUp(() async {
@@ -30,23 +31,26 @@ main() async {
 
   test('dao aula - teste sintaxe sql inserir', () async {
     int resultado = await db.rawInsert(dao.sqlInserir, [
+      1,
       'Aula de Yoga',
-      '2024-10-25',
+      'Barbara'
+          '2024-10-25',
       '08:00 - 09:00',
-      20, // Capacidade máxima
-      'A' // Status ativa
+      20,
+      'A'
     ]);
     expect(resultado, isPositive);
   });
 
   test('dao aula - teste sintaxe sql alterar', () async {
     int resultado = await db.rawUpdate(dao.sqlAlterar, [
+      2,
       'Aula de Pilates',
-      '2024-10-26',
+      'Helio'
+          '2024-10-26',
       '09:00 - 10:00',
       15,
       'A',
-      1 // ID da aula a ser alterada
     ]);
     expect(resultado, isPositive);
   });
@@ -67,8 +71,9 @@ main() async {
   });
 
   test('dao aula - teste inserir', () async {
-    var dto = DTOAula(
-      nomeAula: 'Aula de Spinning',
+    var dto = DtoAula(
+      nomeAula: 'Aula de Jump',
+      aluno: 'Babi',
       data: DateTime.parse('2024-10-27'),
       horario: '18:00 - 19:00',
       capacidadeMaxima: 30,
@@ -79,8 +84,9 @@ main() async {
   });
 
   test('dao aula - teste alterar', () async {
-    var dto = DTOAula(
+    var dto = DtoAula(
       nomeAula: 'Aula de Crossfit',
+      aluno: 'Eduardo',
       data: DateTime.parse('2024-10-28'),
       horario: '07:00 - 08:00',
       capacidadeMaxima: 25,
@@ -88,8 +94,9 @@ main() async {
     );
     dto = await dao.salvar(dto);
 
-    var dtoAlterado = DTOAula(
+    var dtoAlterado = DtoAula(
       nomeAula: 'Aula de HIIT',
+      aluno: 'Jose',
       data: DateTime.parse('2024-10-29'),
       horario: '06:00 - 07:00',
       capacidadeMaxima: 25,
@@ -101,8 +108,9 @@ main() async {
   });
 
   test('dao aula - teste alterar status', () async {
-    var dto = DTOAula(
+    var dto = DtoAula(
       nomeAula: 'Aula de Zumba',
+      aluno: 'Rozana',
       data: DateTime.parse('2024-10-30'),
       horario: '17:00 - 18:00',
       capacidadeMaxima: 20,
@@ -115,8 +123,9 @@ main() async {
   });
 
   test('dao aula - teste consultar por id', () async {
-    var dto = DTOAula(
+    var dto = DtoAula(
       nomeAula: 'Aula de Funcional',
+      aluno: 'Barbara',
       data: DateTime.parse('2024-10-31'),
       horario: '16:00 - 17:00',
       capacidadeMaxima: 20,
@@ -128,8 +137,9 @@ main() async {
   });
 
   test('dao aula - teste consultar todas as aulas', () async {
-    var dto = DTOAula(
+    var dto = DtoAula(
       nomeAula: 'Aula de Yoga',
+      aluno: 'Renan',
       data: DateTime.parse('2024-10-25'),
       horario: '08:00 - 09:00',
       capacidadeMaxima: 20,

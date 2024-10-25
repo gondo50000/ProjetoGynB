@@ -29,25 +29,14 @@ main() async {
   });
 
   test('dao aluno - teste sintaxe sql inserir', () async {
-    int resultado = await db.rawInsert(dao.sqlInserir, [
-      'PAULO',
-      '',
-      '984.755.560-51',
-      'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png',
-      'A'
-    ]);
+    int resultado = await db
+        .rawInsert(dao.sqlInserir, ['PAULO', '', '984.755.560-51', 'A']);
     expect(resultado, isPositive);
   });
 
   test('dao aluno - teste sintaxe sql alterar ', () async {
-    int resultado = await db.rawUpdate(dao.sqlAlterar, [
-      'PAULO',
-      '',
-      '425.817.300-21',
-      'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png',
-      'A',
-      1
-    ]);
+    int resultado = await db
+        .rawUpdate(dao.sqlAlterar, ['PAULO', '', '425.817.300-21', 'A', 1]);
     expect(resultado, isPositive);
   });
 

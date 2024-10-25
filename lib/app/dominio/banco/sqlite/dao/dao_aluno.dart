@@ -50,12 +50,12 @@ class DaoAluno implements IDaoAluno {
   Future<DTOAluno> consultarPorId(int id) async {
     _db = await Conexao.iniciar();
     var resultado = (await _db.rawQuery(sqlConsultarPorId, [id])).first;
-    DTOAluno professor = DTOAluno(
+    DTOAluno aluno = DTOAluno(
         id: resultado['id'],
         nome: resultado['nome'].toString(),
         cpf: resultado['CPF'].toString(),
         status: resultado['status'].toString());
-    return professor;
+    return aluno;
   }
 
   @override

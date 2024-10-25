@@ -6,7 +6,7 @@ class DtoAula {
   final String aluno;
   final DateTime data;
   final String? horario;
-  final int? capacidadeMaxima;
+  final int capacidadeMaxima;
   final String status;
 
   DtoAula(
@@ -15,6 +15,6 @@ class DtoAula {
       required this.aluno,
       required this.data,
       this.horario,
-      this.capacidadeMaxima,
+      required this.capacidadeMaxima,
       this.status = 'A'});
 }
