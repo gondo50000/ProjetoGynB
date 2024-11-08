@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projetogynb/app/dominio/banco/sqlite/conexao.dart';
-import 'package:projetogynb/app/dominio/banco/sqlite/dao/dao_aluno.dart';
-import 'package:projetogynb/app/dominio/dto/dto_aluno.dart';
+import 'package:projetogynb/app/banco/sqlite/conexao.dart';
+import 'package:projetogynb/app/banco/sqlite/dao/dao_aluno.dart';
+import 'package:projetogynb/app/dto/dto_aluno.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 

@@ -1,5 +1,5 @@
-import 'package:projetogynb/app/dominio/dto/dto_aula.dart';
-import 'package:projetogynb/app/dominio/interface/i_dao_aula.dart';
+import 'package:projetogynb/app/dto/dto_aula.dart';
+import 'package:projetogynb/app/interface/i_dao_aula.dart';
 
 class CadastroAulas {
   dynamic _id;
