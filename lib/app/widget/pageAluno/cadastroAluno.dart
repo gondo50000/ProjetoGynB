@@ -8,19 +8,30 @@ class Cadastroaluno extends StatefulWidget {
 class _CadastroAluno extends State<Cadastroaluno> {
   final _formKey = GlobalKey<FormState>();
 
-  final _raController = TextEditingController();
   final _nomeController = TextEditingController();
-  final _cursoController = TextEditingController();
+  final _alturaController = TextEditingController();
+  final _idadeController = TextEditingController();
   final _emailController = TextEditingController();
+  final _cpfController = TextEditingController();
+  final _statusController = TextEditingController();
 
-  void _enviarFormulario() {
+  // Variável para armazenar a seleção do status
+  String? selectedStatus;
+
+  // Lista de opções para o Dropdown
+  List<String> statusOptions = ['Ativo', 'Inativo'];
+
+  void _enviarCadastroAluno() {
     if (_formKey.currentState?.validate() ?? false) {
-      String dados = 'RA: ${_raController.text} ' +
-          ' Nome: ${_nomeController.text} ' +
+      // Exibe as informações cadastradas
+      print('Nome: ${_nomeController.text} ' +
           ' E-mail: ${_emailController.text} ' +
-          ' Curso: ${_cursoController.text} ';
+          ' Idade: ${_idadeController.text} ' +
+          ' CPF: ${_cpfController.text} ' +
+          ' Altura: ${_alturaController.text} ' +
+          ' Status: $selectedStatus');
 
-      Navigator.pop(context, dados);
+      Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Por favor, preencha todos os campos corretamente!'),
@@ -31,7 +42,7 @@ class _CadastroAluno extends State<Cadastroaluno> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Formulário')),
+      appBar: AppBar(title: Text('Cadastro Aluno')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -55,9 +66,9 @@ class _CadastroAluno extends State<Cadastroaluno> {
               ),
               SizedBox(height: 16),
 
-              // Campo de E-mail
+              // Campo de Idade
               TextFormField(
-                controller: _emailController,
+                controller: _idadeController,
                 decoration: InputDecoration(
                   labelText: 'Idade',
                   border: OutlineInputBorder(),
@@ -71,11 +82,11 @@ class _CadastroAluno extends State<Cadastroaluno> {
               ),
               SizedBox(height: 16),
 
-              // Campo de Curso
+              // Campo de Altura
               TextFormField(
-                controller: _cursoController,
+                controller: _alturaController,
                 decoration: InputDecoration(
-                  labelText: 'Altrura',
+                  labelText: 'Altura',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
@@ -87,9 +98,67 @@ class _CadastroAluno extends State<Cadastroaluno> {
               ),
               SizedBox(height: 16),
 
+              // Campo de E-mail
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: "E-mail",
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor insira o e-mail';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
+
+              // Campo de CPF
+              TextFormField(
+                controller: _cpfController,
+                decoration: InputDecoration(
+                  labelText: "CPF",
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor insira o CPF';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
+
+              // Label para o Dropdown (Status)
+              Text(
+                'Selecione o status:',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+
+              // Dropdown de Status
+              DropdownButton<String>(
+                value: selectedStatus,
+                hint: Text('Escolha o status'),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedStatus = newValue;
+                  });
+                },
+                items:
+                    statusOptions.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 16),
+
               ElevatedButton(
-                onPressed: _enviarFormulario,
-                child: Text('Enviar'),
+                onPressed: _enviarCadastroAluno,
+                child: Text('Cadastrar'),
               ),
             ],
           ),

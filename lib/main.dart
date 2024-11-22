@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes:  {'/cadastroAluno': (build) => Cadastroaluno(), 'formulario': (build) => Cadastroaluno()},
+      routes: {'/': (build) => Cadastroaluno(), 'formulario': (build) => Cadastroaluno()
+      },
     );
   }
 }
