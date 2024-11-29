@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 import 'script.dart';
 import 'package:path/path.dart';
@@ -11,7 +12,7 @@ class Conexao {
     if (kIsWeb) {
       databaseFactory = databaseFactoryFfiWeb;
     }
-    
+
     var path = join(await getDatabasesPath(), 'banco.db');
     deleteDatabase(path);
     _db = await openDatabase(path, version: 1, onCreate: (db, version) {

@@ -1,4 +1,3 @@
-
 import '../dto/dto_aluno.dart';
 
 abstract class IDaoAluno {

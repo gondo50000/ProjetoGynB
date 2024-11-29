@@ -6,15 +6,15 @@ class CadastroAulas {
   String? _nomeAula;
   String? _aluno;
   DateTime? _data;
-  String? _horario; 
+  String? _horario;
   int? _capacidadeMaxima;
-  String? _status = 'A'; 
+  String? _status = 'A';
   IDaoAula dao;
 
   CadastroAulas({required this.dao});
 
   // Método para validar os dados da aula antes de salvar
-  void validar({required DtoAula dto}) {
+  void validar({required DTOAula dto}) {
     _nomeAula = dto.nomeAula;
     _aluno = dto.aluno;
     _data = dto.data;
@@ -24,13 +24,13 @@ class CadastroAulas {
   }
 
   // Método para salvar uma nova aula
-  Future<DtoAula> salvar(DtoAula dto) async {
+  Future<DTOAula> salvar(DTOAula dto) async {
     validar(dto: dto);
     return await dao.salvar(dto);
   }
 
   // Método para alterar uma aula existente
-  Future<DtoAula> alterar(dynamic id) async {
+  Future<DTOAula> alterar(dynamic id) async {
     this.id = id;
     return await dao.alterar(_id);
   }
@@ -43,7 +43,7 @@ class CadastroAulas {
   }
 
   // Método para consultar todas as aulas
-  Future<List<DtoAula>> consultar() async {
+  Future<List<DTOAula>> consultar() async {
     return await dao.consultar();
   }
 

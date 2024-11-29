@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MainMenuPage extends StatelessWidget {
+class inicioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gestão GynB'),
+        title: const Text('GynB'),
         centerTitle: true,
       ),
       body: Center(
@@ -27,7 +27,7 @@ class MainMenuPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Redireciona para Cadastro de Aluno
-                  Navigator.pushNamed(context, '/cadastroAluno');
+                  Navigator.pushNamed(context, 'CadastroAluno');
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -41,7 +41,7 @@ class MainMenuPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Redireciona para Cadastro de Aula
-                  Navigator.pushNamed(context, '/cadastroAula');
+                  // Navigator.pushNamed(context, );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -55,7 +55,7 @@ class MainMenuPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Redireciona para Listar Alunos
-                  Navigator.pushNamed(context, '/listarAlunos');
+                  Navigator.pushNamed(context, '/inicio');
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),

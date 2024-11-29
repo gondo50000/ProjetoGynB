@@ -157,6 +157,7 @@ class _CadastroAluno extends State<Cadastroaluno> {
               SizedBox(height: 16),
 
               ElevatedButton(
+                
                 onPressed: _enviarCadastroAluno,
                 child: Text('Cadastrar'),
               ),

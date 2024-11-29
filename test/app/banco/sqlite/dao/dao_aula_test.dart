@@ -17,12 +17,12 @@ main() async {
   });
 
   setUp(() async {
-    db = await Conexao.iniciar();
+    db = await Conexao.abrir();
   });
 
   tearDown(() async {
     deleteDatabase(db.path);
-    db = await Conexao.iniciar();
+    db = await Conexao.abrir();
   });
 
   tearDownAll(() async {
@@ -71,7 +71,7 @@ main() async {
   });
 
   test('dao aula - teste inserir', () async {
-    var dto = DtoAula(
+    var dto = DTOAula(
       nomeAula: 'Aula de Jump',
       aluno: 'Babi',
       data: DateTime.parse('2024-10-27'),
@@ -84,7 +84,7 @@ main() async {
   });
 
   test('dao aula - teste alterar', () async {
-    var dto = DtoAula(
+    var dto = DTOAula(
       nomeAula: 'Aula de Crossfit',
       aluno: 'Eduardo',
       data: DateTime.parse('2024-10-28'),
@@ -94,7 +94,7 @@ main() async {
     );
     dto = await dao.salvar(dto);
 
-    var dtoAlterado = DtoAula(
+    var dtoAlterado = DTOAula(
       nomeAula: 'Aula de HIIT',
       aluno: 'Jose',
       data: DateTime.parse('2024-10-29'),
@@ -108,7 +108,7 @@ main() async {
   });
 
   test('dao aula - teste alterar status', () async {
-    var dto = DtoAula(
+    var dto = DTOAula(
       nomeAula: 'Aula de Zumba',
       aluno: 'Rozana',
       data: DateTime.parse('2024-10-30'),
@@ -123,7 +123,7 @@ main() async {
   });
 
   test('dao aula - teste consultar por id', () async {
-    var dto = DtoAula(
+    var dto = DTOAula(
       nomeAula: 'Aula de Funcional',
       aluno: 'Barbara',
       data: DateTime.parse('2024-10-31'),
@@ -137,7 +137,7 @@ main() async {
   });
 
   test('dao aula - teste consultar todas as aulas', () async {
-    var dto = DtoAula(
+    var dto = DTOAula(
       nomeAula: 'Aula de Yoga',
       aluno: 'Renan',
       data: DateTime.parse('2024-10-25'),

@@ -30,8 +30,8 @@ class DaoCadastroAula implements IDaoAula {
   ''';
 
   @override
-  Future<DtoAula> salvar(DtoAula dto) async {
-    _db = await Conexao.iniciar();
+  Future<DTOAula> salvar(DTOAula dto) async {
+    _db = await Conexao.abrir();
     int id = await _db.rawInsert(sqlInserir, [
       dto.nomeAula,
       dto.data.toIso8601String(),
@@ -45,14 +45,14 @@ class DaoCadastroAula implements IDaoAula {
 
   @override
   Future<bool> alterarStatus(int id) async {
-    _db = await Conexao.iniciar();
+    _db = await Conexao.abrir();
     await _db.rawUpdate(sqlAlterarStatus, [id]);
     return true;
   }
 
   @override
-  Future<DtoAula> alterar(DtoAula dto) async {
-    _db = await Conexao.iniciar();
+  Future<DTOAula> alterar(DTOAula dto) async {
+    _db = await Conexao.abrir();
     await _db.rawUpdate(sqlAlterar, [
       dto.nomeAula,
       dto.data.toIso8601String(),
@@ -65,10 +65,10 @@ class DaoCadastroAula implements IDaoAula {
   }
 
   @override
-  Future<DtoAula> consultarPorId(int id) async {
-    _db = await Conexao.iniciar();
+  Future<DTOAula> consultarPorId(int id) async {
+    _db = await Conexao.abrir();
     var resultado = (await _db.rawQuery(sqlConsultarPorId, [id])).first;
-    DtoAula aula = DtoAula(
+    DTOAula aula = DTOAula(
         id: resultado['id'],
         nomeAula: resultado['nome'].toString(),
         aluno: resultado['nome Aluno'].toString(),
@@ -80,12 +80,12 @@ class DaoCadastroAula implements IDaoAula {
   }
 
   @override
-  Future<List<DtoAula>> consultar() async {
-    _db = await Conexao.iniciar();
+  Future<List<DTOAula>> consultar() async {
+    _db = await Conexao.abrir();
     var resultado = await _db.rawQuery(sqlConsultar);
-    List<DtoAula> aula = List.generate(resultado.length, (i) {
+    List<DTOAula> aula = List.generate(resultado.length, (i) {
       var linha = resultado[i];
-      return DtoAula(
+      return DTOAula(
           id: linha['id'],
           nomeAula: linha['nome'].toString(),
           aluno: linha['nome Aluno'].toString(),

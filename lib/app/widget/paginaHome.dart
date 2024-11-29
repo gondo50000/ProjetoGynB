@@ -26,8 +26,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  // Ação para o botão de Login
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamed(context, 'inicio');
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -41,7 +40,7 @@ class HomePage extends StatelessWidget {
               OutlinedButton(
                 onPressed: () {
                   // Ação para o botão de Cadastro
-                  Navigator.pushNamed(context, '/register');
+                  Navigator.pushNamed(context, '/');
                 },
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),

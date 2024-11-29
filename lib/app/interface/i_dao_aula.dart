@@ -1,9 +1,9 @@
 import 'package:projetogynb/app/dto/dto_aula.dart';
 
 abstract class IDaoAula {
-  Future<DtoAula> salvar(DtoAula dto);
-  Future<DtoAula> alterar(DtoAula dto);
+  Future<DTOAula> salvar(DTOAula dto);
+  Future<DTOAula> alterar(DTOAula dto);
   Future<bool> alterarStatus(int id);
-  Future<DtoAula> consultarPorId(int id);
-  Future<List<DtoAula>> consultar();
+  Future<DTOAula> consultarPorId(int id);
+  Future<List<DTOAula>> consultar();
 }

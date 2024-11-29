@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-class DtoAula {
+class DTOAula {
   dynamic id;
   final String nomeAula;
   final String aluno;
@@ -9,7 +9,7 @@ class DtoAula {
   final int capacidadeMaxima;
   final String status;
 
-  DtoAula(
+  DTOAula(
       {this.id,
       required this.nomeAula,
       required this.aluno,

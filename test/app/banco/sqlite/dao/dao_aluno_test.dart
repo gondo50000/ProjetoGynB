@@ -16,12 +16,12 @@ main() async {
   });
 
   setUp(() async {
-    db = await Conexao.iniciar();
+    db = await Conexao.abrir();
   });
 
   tearDown(() async {
     deleteDatabase(db.path);
-    db = await Conexao.iniciar();
+    db = await Conexao.abrir();
   });
 
   tearDownAll(() async {
