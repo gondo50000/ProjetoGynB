@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:projetogynb/app/widget/pageAluno/cadastroAluno.dart';
+import 'package:projetogynb/app/widget/pageAluno/CadastroAluno.dart';
 import 'app/widget/paginaHome.dart';
 import 'app/widget/paginaInicio.dart';
+import 'app/widget/paginaLogin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (build) => HomePage(),
-          'inicio': (build) => inicioPage(),
-          'CadastroAluno': (build) => Cadastroaluno(),
+          '/login': (build) => Login(),
+          '/inicio': (build) => inicioPage(),
+          '/CadastroAluno': (build) => CadastroAluno(),
         });
   }
 }
