@@ -1,4 +1,5 @@
   import 'package:flutter/material.dart';
+  import '../widget/pageAluno/CadastroAluno.dart';
 
   class inicioPage extends StatelessWidget {
     @override

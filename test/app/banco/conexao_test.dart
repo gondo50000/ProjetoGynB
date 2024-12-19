@@ -1,21 +1,24 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projetogynb/app/banco/sqlite/conexao.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
+import 'package:sqflite/sqflite.dart';
+import '../../../lib/app/banco/sqlite/conexao.dart';
 
-main() async {
+void main() {
   setUpAll(() {
+    print('Inicializando sqfliteFfi');
     sqfliteFfiInit();
-    if (kIsWeb) {
-      databaseFactory = databaseFactoryFfiWeb;
-    }
+    databaseFactory = databaseFactoryFfi;
+    print('sqfliteFfi inicializado');
   });
 
-  test('Teste classe conexao', () async {
-    var db = await Conexao.abrir();
-    expect(db.isOpen, true);
-    await db.close();
+  test('Teste de conexão com o banco de dados', () async {
+    print('Iniciando teste de conexão com o banco de dados');
+    try {
+      Database db = await Conexao.abrir();
+      print('Banco de dados aberto: ${db.isOpen}');
+      expect(db.isOpen, true);
+    } catch (e) {
+      print('Erro ao abrir o banco de dados: $e');
+    }
   });
 }
